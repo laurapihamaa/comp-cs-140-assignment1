@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # .NET service (Service 1)
+  service1:
+    image: mcr.microsoft.com/dotnet/aspnet:5.0
+    build:
+      context: ./service1/Service1
+    container_name: service1
+    ports:
+      - "8199:8199"  # Expose endpoint to outside world
+    environment:
+      - ASPNETCORE_URLS=http://+:8199
+    volumes:
+      - ./vstorage:/vstorage
+    networks:
+      - app-network
+
+  # Clojure service (Service 2)
+  service2:
+    image: clojure:openjdk-11-lein-2.9.1
+    build:
+      context: ./service2/rest-api-sample
+    container_name: service2
+    depends_on:
+      - service1
+      - storage
+    volumes:
+      - ./vstorage:/vstorage
+    networks:
+      - app-network
+
+  # Java service (Storage)
+  storage:
+    image: storage
+    build:
+      context: ./storage/demo
+    container_name: storage
+    depends_on:
+      - service1
+    volumes:
+      - ./vstorage:/vstorage
+      - myapp-data:/app/data
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  myapp-data:

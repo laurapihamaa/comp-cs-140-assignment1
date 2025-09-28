@@ -1,0 +1,9 @@
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS          PORTS                    NAMES
+8cb0b615cd86   clojure:openjdk-11-lein-2.9.1         "lein run"               52 minutes ago   Up 52 minutes   8080/tcp                 service2
+9d4604d80c9d   storage                               "java -jar target/de…"   52 minutes ago   Up 52 minutes   8080/tcp                 storage
+1302119a7202   mcr.microsoft.com/dotnet/aspnet:5.0   "dotnet Service1.dll"    52 minutes ago   Up 52 minutes   0.0.0.0:5000->5000/tcp   service1
+
+NETWORK ID     NAME               DRIVER    SCOPE
+c6b19facfb2d   bridge             bridge    local
+8187110c2dee   host               host      local
+f2bdc0ff4d1c   temp_app-network   bridge    local

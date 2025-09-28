@@ -1,0 +1,11 @@
+I used the help of LLM-tools in coding and creating the docker files.
+The llm-tools used are chatGPT and Github Copilot.
+
+The motivation to use LLM tools is to ease out the coding part and make it more efficient. Copilot was mainly used within the editor to suggest what code I might be wanting to write next and whenever that suited my needs I picked it up. ChatGPT was more used for asking clarifications for things that I didnt understand.
+I asked for ChatGPT to create the docker files and in this part I got some minor errors like:
+1. the docker file for dotnet did not include the build part
+2. the dotnet and java versions was very old
+3. the folders were incorrect
+The methods for fecthing uptime and used disk space were also suggestions from copilot and as I did not have time to go through them they might not provide what is actually wanted.
+
+The written report was not assisted by LLM.
